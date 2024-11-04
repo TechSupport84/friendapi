@@ -28,7 +28,8 @@ app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);
     db.connect((err)=>{
         if(err) throw err
-        console.log("Connected !")
+        console.log("Connected !",process.env.TOKEN)
+        
     })
 })
 

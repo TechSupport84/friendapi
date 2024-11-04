@@ -1,7 +1,7 @@
 const db = require("../config/databas")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
-
+require('dotenv').config();
 
 const  register =(req,  res) =>{
     const q= "SELECT *  FROM  users WHERE username = ? OR email = ?";
@@ -44,7 +44,7 @@ const userLogin = (req, res) =>{
 
             const {password, ...others} = data[0];
 
-            const token = jwt.sign({id:data[0].id},"jeancy")
+            const token = jwt.sign({id:data[0].id},process.env.TOKEN)
 
             res.cookie("accessToken", token,{
                 httpOnly :true
